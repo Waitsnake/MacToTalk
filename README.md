@@ -7,7 +7,7 @@ Python script to foreward TextToTalk(https://github.com/karashiiro/TextToTalk) W
   ```
   pip install -r requirements.txt
   ```
-- the script MacToTalk.py defines some voices it uses:
+- the script MacToTalk.py defines some voices it uses (onyl English and German supported at the moment, but adding French and Japanse should be possible too with a few changes):
   ```
   en_neutral = 'com.apple.voice.premium.en-US.Ava'
   en_female = 'com.apple.voice.enhanced.en-GB.Stephanie'
