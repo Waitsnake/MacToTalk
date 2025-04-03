@@ -1,11 +1,11 @@
 import asyncio
 import json
 import os
-import pyperclip
 import signal
 import sys
 import time
 import websockets
+from datetime import datetime
 from logging import getLogger, StreamHandler, DEBUG, INFO, ERROR, WARNING
 from  AppKit import NSSpeechSynthesizer
 
@@ -23,7 +23,7 @@ except:
     logger.warning("No custom_speakers.py found.")
 
 #define own rate of speach
-rate = "+225.0"
+rate = "+200.0"
 
 # define voices
 en_neutral = 'com.apple.voice.premium.en-US.Ava'
@@ -91,8 +91,6 @@ async def process_message(message):
                 logger.warning(f"Received message: {message}")
                 return
 
-            pyperclip.copy(payload)
-
             if not voice:
                 logger.warning("Received message without 'Voice'")
                 logger.warning(f"Received message: {message}")
@@ -109,7 +107,7 @@ async def process_message(message):
                 lang = 'English'
 
             # print values used
-            print("Say message received.")
+            print(datetime.now(), "Say message received.")
             print("Gender =", gender)
             print("Language =", lang)
             print("Speaker =", speaker)
@@ -169,7 +167,7 @@ async def process_message(message):
             ve.startSpeakingString_(payload)
 
         if type == 'Cancel':
-            print("Cancel message received.")
+            print(datetime.now(), "Cancel message received.")
             print("")
             # stop speaking
             ve.stopSpeaking()
